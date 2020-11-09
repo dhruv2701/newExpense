@@ -11,38 +11,6 @@
 <body>
 
 	    <%- include("partials/nav") %>
-			
-		<div class="row">	
-			<div class="col-lg-5 p-5 m-5"> 
-				<h1 class="text-center">Add Expenses Details</h1>
-				
-				<div style="background:gray; height:500px">
-					<form action="/expense" method="POST">
-					<div class="form-group col-md-12"> 
-      						<label for="Name">Name</label>
-      						<input type="String" class="form-control" id="Name" name="user[name]" required>
-    				</div>
-					<div class="form-row">
-    					<div class="form-group col-md-5 ml-4">	
-      						<label for="Number">Amount</label>
-      						<input type="String" class="form-control" id="Number" name="user[amount]" required>
-    					</div>
-						<div class="form-group col-md-5 ml-4">
-      						<label for="Date">Date</label>
-      						<input type="Date" class="form-control" id="Date" name="user[date]" required>
-    					</div>	
-					</div>
-		 	 		<div class="form-group"> 
-    					<label for="Textarea1">Description of expenses</label>
-    					<textarea class="form-control" style="height:200px"id="Textarea1" name="user[description]" required></textarea>
-					</div>
-					<button  class="btn btn-primary pr-8">Add Expense</button>
-					
-			
-					</form>
-				</div>	
-			
-			</div>
 			<!-- <div>
 				<form action="/expense/date" method="GET">
 					<label for="Date">Date</label>

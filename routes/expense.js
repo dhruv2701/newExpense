@@ -12,7 +12,9 @@ function isloggedin(req,res,next){
 	next();
 }
 
-
+router.get("/new",isloggedin,async (req,res)=>{
+	res.render("new");
+})
 router.get("/expense",isloggedin,async (req,res)=>{
 	Expense.find({},function(err,expense){
 		//console.log(expense)
@@ -42,7 +44,6 @@ router.post("/expense",isloggedin,async (req,res)=>{
 });
 
 router.delete("/expense/:id",async (req,res)=>{
-	 //const{id} = req.params;
 	 await Expense.findByIdAndDelete(req.params.id);
 	 res.redirect("/expense")
 

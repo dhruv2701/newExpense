@@ -1,7 +1,6 @@
 {
   "name": "database_demo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,5 +30,7 @@
     "passport-local-mongoose": "^6.0.1",
     "path": "^0.12.7",
     "uuid": "^8.3.1"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
