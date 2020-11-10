@@ -19,38 +19,36 @@
 				</form>
 			</div> -->
 			
-			
+		<div class="row">
 			<div class="col-lg-5 p-5 m-5"> 
-				<h1 class="exp">Expenses<i class="fa fa-plus"></i></h1>	
+				<h1 class="exp">Expenses <i class="fa fa-plus"></i></h1>	
 				<div class="list">
 					<% user.forEach(function(friend){ %>
+
 					<div class="ele" style="border:1px white solid">
 						<div class="details">
-						<%= friend.name %>
-						<%= friend.amount %> Rupees
-						<div class="desc">
-							<%- friend.description %> 
-						</div>
-						
-						<div class="DATE">
-						<% if(friend.date){ %>
-							<%= friend.date.toDateString() %>
-						<% } %>
-							
-						</div>
+							<%= friend.name %>
+							<%= friend.amount %> Rupees
+							<div class="desc">
+								<%- friend.description %> 
+							</div>
+							<div class="DATE">
+								<% if(friend.date){ %>
+									<%= friend.date.toDateString() %>
+								<% } %>
+							</div>
 						</div>
 						<div>
 							<a class="btn btn-primary" href="/expense/<%=friend._id %>/edit">Edit</a>
 							<form action="/expense/<%=friend._id%>?_method=DELETE" method="POST">
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
+                        		<button class="btn btn-danger">Delete</button>
+                        	</form>
 						</div>
-						
 					</div>
 					<% }) %>
 				</div>
 			</div>
-	</div>
+		</div>
 	
 	
 

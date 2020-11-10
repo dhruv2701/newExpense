@@ -29,7 +29,7 @@ router.get("/expense",isloggedin,async (req,res)=>{
 	});
 });
 
-router.get("/search",async (req,res)=>{
+router.get("/search",isloggedin,async (req,res)=>{
 	Expense.find({date:req.query.date},function(err,expense){
 		if(err)console.log(err);
 		else{
@@ -56,6 +56,10 @@ router.post("/expense",isloggedin,async (req,res)=>{
 	
 });
 
+router.get("/expense/:id",async(req,res)=>{
+	res.send("jii")
+	console.log(req.params);
+})
 router.get("/expense/:id/edit",async (req,res)=>{
 	const expense = await Expense.findById(req.params.id);
 	res.render("edit",{expense});
