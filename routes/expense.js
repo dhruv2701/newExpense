@@ -15,19 +15,32 @@ function isloggedin(req,res,next){
 router.get("/new",isloggedin,async (req,res)=>{
 	res.render("new");
 })
+
 router.get("/expense",isloggedin,async (req,res)=>{
 	Expense.find({},function(err,expense){
-		//console.log(expense)
-		console.log(req.user.username);
 		if(err)console.log(err);
 		else{
-			const EXPENSE =  expense.filter((u)=>{
+			let EXPENSE =  expense.filter((u)=>{
 			 return u.owner.id.equals(req.user._id)
 			 })
+			 console.log(EXPENSE);
 			res.render("expense",{user:EXPENSE});
 		}
 	});
 });
+
+router.get("/search",async (req,res)=>{
+	Expense.find({date:req.query.date},function(err,expense){
+		if(err)console.log(err);
+		else{
+			let reqExpense = expense.filter((u)=>{
+				return u.owner.id.equals(req.user._id);
+			})
+			console.log(reqExpense);
+			res.render("expense",{user:reqExpense})		
+		}
+	});
+})
 
 router.post("/expense",isloggedin,async (req,res)=>{
 	const owner={
@@ -43,20 +56,11 @@ router.post("/expense",isloggedin,async (req,res)=>{
 	
 });
 
-
 router.get("/expense/:id/edit",async (req,res)=>{
 	const expense = await Expense.findById(req.params.id);
 	res.render("edit",{expense});
 })
 
-router.get("/search",async (req,res)=>{
-	const Date = req.query.date;
-	Expense.find({date:req.query.date},function(err,expense){
-		if(err)console.log(err);
-		else
-			res.render("expense",{user:expense})		
-		})
-})
 router.put("/expense/:id",isloggedin,async (req,res)=>{
 	await Expense.findByIdAndUpdate(req.params.id,{...req.body.user});
 	res.redirect("/expense");
