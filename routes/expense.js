@@ -50,11 +50,11 @@ router.get("/expense/:id/edit",async (req,res)=>{
 })
 
 router.get("/search",async (req,res)=>{
-	console.log(req.query.date);
+	const Date = req.query.date;
 	Expense.find({date:req.query.date},function(err,expense){
 		if(err)console.log(err);
 		else
-			res.render("date",{user:expense})		
+			res.render("expense",{user:expense})		
 		})
 })
 router.put("/expense/:id",isloggedin,async (req,res)=>{
