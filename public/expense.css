@@ -26,7 +26,10 @@ body{
 	margin-bottom: 40px;
 	padding: 10px 0 0 10px;
 }
-.btn{
+.btn-primary{
+	float: left;
+}
+.btn-danger{
 	float: right;
 }
 .DATE{

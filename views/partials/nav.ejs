@@ -10,9 +10,12 @@
                 <a class="nav-link" href="/expense">All Expenses</a>
                 <a class="nav-link" href="/new">New Expense</a>
             </div>
-            <div class="navbar-nav ml-auto">                
+            <div class="navbar-nav ml-auto">   
+                <form action="/search" method="GET">
+                    <input type="date" name="date" style="width: 250px; height: 20px; border-radius: 20px;" placeholder="Search by name or date">
+                    <button style="display: none;"></button>   
+                </form>
                 <a class="nav-link" href="/logout">Logout</a>
-                
             </div>
         </div>
     </div>

@@ -43,22 +43,30 @@ router.post("/expense",isloggedin,async (req,res)=>{
 	
 });
 
+
+router.get("/expense/:id/edit",async (req,res)=>{
+	const expense = await Expense.findById(req.params.id);
+	res.render("edit",{expense});
+})
+
+router.get("/search",async (req,res)=>{
+	console.log(req.query.date);
+	Expense.find({date:req.query.date},function(err,expense){
+		if(err)console.log(err);
+		else
+			res.render("date",{user:expense})		
+		})
+})
+router.put("/expense/:id",isloggedin,async (req,res)=>{
+	await Expense.findByIdAndUpdate(req.params.id,{...req.body.user});
+	res.redirect("/expense");
+})
+
 router.delete("/expense/:id",async (req,res)=>{
 	 await Expense.findByIdAndDelete(req.params.id);
 	 res.redirect("/expense")
 
 });
-
-
-
-// router.get("/expense/date",function(req,res){
-// 	Expense.find({date:req.body.date},function(err,expense){
-// 		if(err)console.log(err);
-// 		else{
-// 			res.render("date",{user:expense})
-// 		}
-// 	})
-// })
 
  router.use((err,req,res,next)=>{
 	res.send('something went wrong')

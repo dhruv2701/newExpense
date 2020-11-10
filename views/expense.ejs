@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Expense</title>
-	<link rel="stylesheet" type="text/css" href="expense.css">
+	<link rel="stylesheet" type="text/css" href="/expense.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -36,9 +36,11 @@
 						<% if(friend.date){ %>
 							<%= friend.date.toDateString() %>
 						<% } %>
+							
 						</div>
 						</div>
 						<div>
+							<a class="btn btn-primary" href="/expense/<%=friend._id %>/edit">Edit</a>
 							<form action="/expense/<%=friend._id%>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger">Delete</button>
                             </form>
